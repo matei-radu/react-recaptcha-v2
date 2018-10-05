@@ -5,8 +5,12 @@
  * file in the root directory of this source tree.
  */
 
-console.log(test());
+import React, { Component } from "react";
 
-function test(): string {
-  return "Hello, world";
+class ReCaptcha extends Component {
+  render() {
+    return <div>ReCaptcha</div>
+  }
 }
+
+export default ReCaptcha
