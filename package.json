@@ -1,0 +1,40 @@
+{
+  "name": "@matt-block/react-recaptcha-v2",
+  "version": "0.0.1",
+  "description": "Google reCAPTCHA v2 React component that does not pollute the DOM",
+  "main": "lib/index.js",
+  "types": "types/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/matt-block/react-recaptcha-v2.git"
+  },
+  "bugs": "https://github.com/matt-block/react-recaptcha-v2/issues",
+  "homepage": "https://github.com/matt-block/react-recaptcha-v2#readme",
+  "author": "Matei Bogdan Radu <matei.radu.92@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "compile": "tsc"
+  },
+  "devDependencies": {
+    "@types/react": "^16.4.14",
+    "husky": "^1.1.1",
+    "lint-staged": "^7.3.0",
+    "prettier": "^1.14.3",
+    "typescript": "^3.1.1"
+  },
+  "peerDependencies": {
+    "react": "^16.0.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,flow,ts,json,css,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  }
+}
