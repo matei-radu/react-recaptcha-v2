@@ -14,7 +14,8 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "build": "rollup -c rollup.config.ts"
+    "build": "rollup -c rollup.config.ts",
+    "build:definitions": "tsc --emitDeclarationOnly"
   },
   "devDependencies": {
     "@types/react": "^16.4.14",
