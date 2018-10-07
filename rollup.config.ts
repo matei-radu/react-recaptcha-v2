@@ -11,7 +11,8 @@ export default {
   input: "src/index.tsx",
   output: {
     file: "lib/index.esm.js",
-    format: "esm"
+    format: "esm",
+    external: ["react"]
   },
   plugins: [typescript()]
 };
