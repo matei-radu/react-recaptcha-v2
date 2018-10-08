@@ -13,6 +13,8 @@ interface ReCaptchaProps {
 
 class ReCaptcha extends Component<ReCaptchaProps, undefined> {
   private scriptSrc = "https://www.google.com/recaptcha/api.js";
+  private observer = new MutationObserver(this.mutationCallbackGenerator());
+  private hiddenDiv = document.createElement("div"); // Just a placeholder.
 
   /**
    * Appends the reCAPTCHA script to the document body if necessary.
@@ -55,16 +57,8 @@ class ReCaptcha extends Component<ReCaptchaProps, undefined> {
       this.removeChild(script);
     }
 
-    // Remove additional elements added by the script.
-    const additionalDivs = Array.from(
-      document.getElementsByClassName("g-recaptcha-bubble-arrow")
-    );
-    if (additionalDivs.length > 0) {
-      // The first element will be the parent of all other
-      // `g-recaptcha-bubble-arrow` elements, so it's sufficient
-      // to remove only it.
-      document.body.removeChild(additionalDivs[0]);
-    }
+    // Remove additional hidden div added by the script.
+    this.removeChild(this.hiddenDiv);
 
     // Remove additional scripts added by the original one.
     const allScripts = Array.from(document.scripts);
@@ -76,8 +70,39 @@ class ReCaptcha extends Component<ReCaptchaProps, undefined> {
   }
 
   removeChild(element: HTMLElement) {
-    const parentNode = element.parentNode!;
-    parentNode.removeChild(element);
+    const parentNode = element.parentNode;
+    if (parentNode !== null) {
+      parentNode.removeChild(element);
+    }
+  }
+
+  mutationCallbackGenerator() {
+    return (mutations: MutationRecord[]) => {
+      mutations.forEach(mutation => {
+        if (
+          mutation.type === "childList" &&
+          mutation.target === document.body &&
+          mutation.addedNodes.length === 1 &&
+          this.isNodeReCaptchaHiddenDiv(mutation.addedNodes[0])
+        ) {
+          this.hiddenDiv = mutation.addedNodes[0] as HTMLDivElement;
+          this.observer.disconnect();
+        }
+      });
+    };
+  }
+
+  /**
+   * Checks if a node is a reCAPTCHA hidden div
+   * (reCAPTCHA adds one to the document).
+   */
+  isNodeReCaptchaHiddenDiv(node: Node) {
+    const div = node as HTMLDivElement;
+    return (
+      div.style.visibility === "hidden" &&
+      div.style.zIndex === "2000000000" &&
+      div.style.position === "absolute"
+    );
   }
 
   render() {
