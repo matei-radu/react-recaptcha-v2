@@ -18,26 +18,20 @@ class ReCaptcha extends Component<ReCaptchaProps, undefined> {
    * Appends the reCAPTCHA script to the document body if necessary.
    */
   appendScript() {
-    if (!this.isScriptAvailable()) {
+    if (!this.getScriptIfAvailable()) {
       const reCaptchaScript = this.createScriptElement();
-      document.body.appendChild(reCaptchaScript)
+      document.body.appendChild(reCaptchaScript);
     }
   }
 
-  isScriptAvailable(): boolean {
-    if (document.getElementById('recaptcha')) {
-      return true;
+  getScriptIfAvailable(): HTMLScriptElement | undefined {
+    if (document.getElementById('recaptcha') !== null) {
+      return document.getElementById('recaptcha') as HTMLScriptElement;
     }
 
     // Maybe the script was added but not from this component.
     const availableScripts = Array.from(document.scripts);
-    availableScripts.forEach(script => {
-      if (script.src === this.scriptSrc) {
-        return true;
-      }
-    });
-
-    return false;
+    return availableScripts.find(script => script.src === this.scriptSrc);
   }
 
   createScriptElement(): HTMLScriptElement {
