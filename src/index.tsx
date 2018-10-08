@@ -16,6 +16,15 @@ class ReCaptcha extends Component<ReCaptchaProps, undefined> {
   private observer = new MutationObserver(this.mutationCallbackGenerator());
   private hiddenDiv = document.createElement("div"); // Just a placeholder.
 
+  componentDidMount() {
+    this.observer.observe(document.body, { childList: true });
+    this.appendScript();
+  }
+
+  componentWillUnmount() {
+    this.cleanup();
+  }
+
   /**
    * Appends the reCAPTCHA script to the document body if necessary.
    */
@@ -106,7 +115,14 @@ class ReCaptcha extends Component<ReCaptchaProps, undefined> {
   }
 
   render() {
-    return <div>ReCaptcha</div>;
+    return (
+      <div
+        className="g-recaptcha"
+        data-sitekey={this.props.siteKey}
+        data-theme="dark"
+        data-size="normal"
+      />
+    );
   }
 }
 
