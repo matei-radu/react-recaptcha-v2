@@ -6,21 +6,34 @@
  */
 
 import React, { Component } from "react";
+import nanoid from "nanoid";
 
 interface ReCaptchaProps {
   siteKey: string;
   theme?: "light" | "dark";
   size?: "normal" | "compact";
+  onSuccess?: (result: string) => any;
+  onExpire?: () => any;
+  onError?: () => any;
 }
 
 class ReCaptcha extends Component<ReCaptchaProps, {}> {
   private scriptSrc = "https://www.google.com/recaptcha/api.js";
   private observer = new MutationObserver(this.mutationCallbackGenerator());
   private hiddenDiv = document.createElement("div"); // Just a placeholder.
+  private id = nanoid();
+  private successCallbackId = nanoid();
+  private expiredCallbackId = nanoid();
+  private errorCallbackId = nanoid();
 
   componentDidMount() {
     this.observer.observe(document.body, { childList: true });
     this.appendScript();
+
+    // Feels hacky but it's shorter than extending the Window interface.
+    (window as any)[this.successCallbackId] = this.props.onSuccess;
+    (window as any)[this.expiredCallbackId] = this.props.onExpire;
+    (window as any)[this.errorCallbackId] = this.props.onError;
   }
 
   componentWillUnmount() {
@@ -67,6 +80,11 @@ class ReCaptcha extends Component<ReCaptchaProps, {}> {
     if (script) {
       this.removeChild(script);
     }
+
+    // Remove callback functions from window.
+    delete (window as any)[this.successCallbackId];
+    delete (window as any)[this.expiredCallbackId];
+    delete (window as any)[this.errorCallbackId];
 
     // Remove additional hidden div added by the script.
     this.removeChild(this.hiddenDiv);
@@ -119,10 +137,14 @@ class ReCaptcha extends Component<ReCaptchaProps, {}> {
   render() {
     return (
       <div
+        id={this.id}
         className="g-recaptcha"
         data-sitekey={this.props.siteKey}
         data-theme={this.props.theme}
         data-size={this.props.size}
+        data-callback={this.successCallbackId}
+        data-expired-callback={this.expiredCallbackId}
+        data-error-callback={this.errorCallbackId}
       />
     );
   }
