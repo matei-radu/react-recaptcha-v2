@@ -44,6 +44,38 @@ class ReCaptcha extends Component<ReCaptchaProps, undefined> {
     return reCaptchaScript;
   }
 
+  /**
+   * Removes the reCAPTCHA script if it's available in the document and
+   * any other elements automatically added by the script.
+   */
+  private cleanup() {
+    // Remove the original script.
+    const script = this.getScriptIfAvailable();
+    if(script) {
+      this.removeChild(script);
+    }
+
+    // Remove additional elements added by the script.
+    const additionalDivs = Array.from(document.getElementsByClassName('g-recaptcha-bubble-arrow'));
+    if (additionalDivs.length > 0) {
+      // The first element will be the parent of all other
+      // `g-recaptcha-bubble-arrow` elements, so it's sufficient
+      // to remove only it.
+      document.body.removeChild(additionalDivs[0]);
+    }
+
+    // Remove additional scripts added by the original one.
+    const allScripts = Array.from(document.scripts);
+    const reCaptchaSrcPattern = /https:\/\/www.gstatic.com\/recaptcha\/api2\/.*.js$/;
+    const additionalScripts = allScripts.filter(script => reCaptchaSrcPattern.test(script.src))
+    additionalScripts.map(this.removeChild);
+  }
+
+  removeChild(element: HTMLElement) {
+    const parentNode = element.parentNode!;
+    parentNode.removeChild(element);
+  }
+
 
   render() {
     return <div>ReCaptcha</div>
