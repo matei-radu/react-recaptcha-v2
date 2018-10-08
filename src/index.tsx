@@ -8,7 +8,7 @@
 import React, { Component } from "react";
 
 interface ReCaptchaProps {
-  siteKey: string,
+  siteKey: string;
 }
 
 class ReCaptcha extends Component<ReCaptchaProps, undefined> {
@@ -25,8 +25,8 @@ class ReCaptcha extends Component<ReCaptchaProps, undefined> {
   }
 
   getScriptIfAvailable(): HTMLScriptElement | undefined {
-    if (document.getElementById('recaptcha') !== null) {
-      return document.getElementById('recaptcha') as HTMLScriptElement;
+    if (document.getElementById("recaptcha") !== null) {
+      return document.getElementById("recaptcha") as HTMLScriptElement;
     }
 
     // Maybe the script was added but not from this component.
@@ -51,12 +51,14 @@ class ReCaptcha extends Component<ReCaptchaProps, undefined> {
   private cleanup() {
     // Remove the original script.
     const script = this.getScriptIfAvailable();
-    if(script) {
+    if (script) {
       this.removeChild(script);
     }
 
     // Remove additional elements added by the script.
-    const additionalDivs = Array.from(document.getElementsByClassName('g-recaptcha-bubble-arrow'));
+    const additionalDivs = Array.from(
+      document.getElementsByClassName("g-recaptcha-bubble-arrow")
+    );
     if (additionalDivs.length > 0) {
       // The first element will be the parent of all other
       // `g-recaptcha-bubble-arrow` elements, so it's sufficient
@@ -67,7 +69,9 @@ class ReCaptcha extends Component<ReCaptchaProps, undefined> {
     // Remove additional scripts added by the original one.
     const allScripts = Array.from(document.scripts);
     const reCaptchaSrcPattern = /https:\/\/www.gstatic.com\/recaptcha\/api2\/.*.js$/;
-    const additionalScripts = allScripts.filter(script => reCaptchaSrcPattern.test(script.src))
+    const additionalScripts = allScripts.filter(script =>
+      reCaptchaSrcPattern.test(script.src)
+    );
     additionalScripts.map(this.removeChild);
   }
 
@@ -76,10 +80,9 @@ class ReCaptcha extends Component<ReCaptchaProps, undefined> {
     parentNode.removeChild(element);
   }
 
-
   render() {
-    return <div>ReCaptcha</div>
+    return <div>ReCaptcha</div>;
   }
 }
 
-export default ReCaptcha
+export default ReCaptcha;
