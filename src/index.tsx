@@ -9,9 +9,11 @@ import React, { Component } from "react";
 
 interface ReCaptchaProps {
   siteKey: string;
+  theme?: "light" | "dark";
+  size?: "normal" | "compact";
 }
 
-class ReCaptcha extends Component<ReCaptchaProps, undefined> {
+class ReCaptcha extends Component<ReCaptchaProps, {}> {
   private scriptSrc = "https://www.google.com/recaptcha/api.js";
   private observer = new MutationObserver(this.mutationCallbackGenerator());
   private hiddenDiv = document.createElement("div"); // Just a placeholder.
@@ -119,8 +121,8 @@ class ReCaptcha extends Component<ReCaptchaProps, undefined> {
       <div
         className="g-recaptcha"
         data-sitekey={this.props.siteKey}
-        data-theme="dark"
-        data-size="normal"
+        data-theme={this.props.theme}
+        data-size={this.props.size}
       />
     );
   }
