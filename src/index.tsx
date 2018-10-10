@@ -17,7 +17,7 @@ interface ReCaptchaProps {
   onError?: () => any;
 }
 
-class ReCaptcha extends Component<ReCaptchaProps, {}> {
+class ReCaptcha extends Component<ReCaptchaProps> {
   private scriptSrc = "https://www.google.com/recaptcha/api.js";
   private observer = new MutationObserver(this.mutationCallbackGenerator());
   private hiddenDiv = document.createElement("div"); // Just a placeholder.
@@ -129,7 +129,7 @@ class ReCaptcha extends Component<ReCaptchaProps, {}> {
     const div = node as HTMLDivElement;
     return (
       div.style.visibility === "hidden" &&
-      div.style.zIndex === "2000000000" &&
+      div.style.top === "-10000px" &&
       div.style.position === "absolute"
     );
   }
