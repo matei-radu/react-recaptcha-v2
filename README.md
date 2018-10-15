@@ -109,6 +109,6 @@ This source code is licensed under the MIT license found in the
 [recaptcha_admin]: https://www.google.com/recaptcha/admin
 [recaptcha_docs]: https://developers.google.com/recaptcha/docs/display
 [recaptcha_site]: https://developers.google.com/recaptcha/
-[cleanup_gif]: https://github.com/matt-block/react-recaptcha-v2/blob/master/assets/cleanup.gif
+[cleanup_gif]: https://raw.githubusercontent.com/matt-block/react-recaptcha-v2/master/assets/cleanup.gif
 [typescript]: http://www.typescriptlang.org/
 [rollup]: https://rollupjs.org
