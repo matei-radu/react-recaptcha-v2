@@ -128,6 +128,7 @@ class ReCaptcha extends Component<ReCaptchaProps> {
   isNodeReCaptchaHiddenDiv(node: Node) {
     const div = node as HTMLDivElement;
     return (
+      div.style &&
       div.style.visibility === "hidden" &&
       div.style.top === "-10000px" &&
       div.style.position === "absolute"
