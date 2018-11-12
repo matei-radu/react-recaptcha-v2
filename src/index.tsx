@@ -19,6 +19,7 @@ interface ReCaptchaProps {
 
 class ReCaptcha extends Component<ReCaptchaProps> {
   private scriptSrc = "https://www.google.com/recaptcha/api.js";
+  private testSiteKey = "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI";
   private observer = new MutationObserver(this.mutationCallbackGenerator());
   private hiddenDiv = document.createElement("div"); // Just a placeholder.
   private id = nanoid();
@@ -136,13 +137,14 @@ class ReCaptcha extends Component<ReCaptchaProps> {
   }
 
   render() {
+    const { siteKey, theme, size } = this.props;
     return (
       <div
         id={this.id}
         className="g-recaptcha"
-        data-sitekey={this.props.siteKey}
-        data-theme={this.props.theme}
-        data-size={this.props.size}
+        data-sitekey={siteKey === "test" ? this.testSiteKey : siteKey}
+        data-theme={theme}
+        data-size={size}
         data-callback={this.successCallbackId}
         data-expired-callback={this.expiredCallbackId}
         data-error-callback={this.errorCallbackId}
