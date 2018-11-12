@@ -84,7 +84,7 @@ The only mandatory prop is `siteKey` which can be obtained from the
 
 | Prop        | Type                  | Default     | Description                                                                                                                                                                                                                                          |
 | ----------- | --------------------- | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `siteKey`   | `string`              | `undefined` | **Required**. Your site key.                                                                                                                                                                                                                         |
+| `siteKey`   | `string`              | `undefined` | **Required**. Your site key or the value `"test"` which will inject the [test key][recaptcha_testkey].                                                                                                                                               |
 | `theme`     | `light` \| `dark`     | `light`     | The color theme of the widget.                                                                                                                                                                                                                       |
 | `size`      | `normal` \| `compact` | `normal`    | The size of the widget.                                                                                                                                                                                                                              |
 | `onSuccess` | `function`            | `undefined` | Callback function, executed when the user submits a successful response. The response token is passed to your callback.                                                                                                                              |
@@ -109,6 +109,7 @@ This source code is licensed under the MIT license found in the
 [recaptcha_admin]: https://www.google.com/recaptcha/admin
 [recaptcha_docs]: https://developers.google.com/recaptcha/docs/display
 [recaptcha_site]: https://developers.google.com/recaptcha/
+[recaptcha_testkey]: https://developers.google.com/recaptcha/docs/faq#automated_test
 [cleanup_gif]: https://raw.githubusercontent.com/matt-block/react-recaptcha-v2/master/assets/cleanup.gif
 [typescript]: http://www.typescriptlang.org/
 [rollup]: https://rollupjs.org
