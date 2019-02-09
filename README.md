@@ -11,7 +11,7 @@ built with [Typescript][typescript] and [Rollup][rollup].
 - [x] Does not pollute the DOM by cleaning up on unmount (see below)
 - [x] Can safely add multiple `<ReCaptcha>` components in the same page, they
       will not conflict with each other.
-- [x] Typescript definitions (Flow ones are WIP)
+- [x] Typescript and Flow definitions
 - [x] Actively developed
 
 ### DOM Pollution and Cleanup
