@@ -6,6 +6,7 @@
  */
 
 import typescript from "rollup-plugin-typescript";
+import copy from "rollup-plugin-copy";
 
 export default {
   input: "src/index.tsx",
@@ -14,5 +15,8 @@ export default {
     format: "esm",
     external: ["react"]
   },
-  plugins: [typescript()]
+  plugins: [
+    typescript(),
+    copy({ "src/index.js.flow": "lib/index.esm.js.flow" })
+  ]
 };

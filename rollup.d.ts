@@ -11,3 +11,10 @@ declare module "rollup-plugin-typescript" {
   function typescript(options?: Object): Plugin;
   export default typescript;
 }
+
+declare module "rollup-plugin-copy" {
+  import { Plugin } from "rollup";
+
+  function copy(options?: Object): Plugin;
+  export default copy;
+}
