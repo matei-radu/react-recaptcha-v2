@@ -1,6 +1,6 @@
 {
   "name": "@matt-block/react-recaptcha-v2",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Google reCAPTCHA v2 React component that does not pollute the DOM",
   "main": "lib/index.esm.js",
   "types": "types/index.d.ts",
@@ -17,11 +17,11 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/matt-block/react-recaptcha-v2.git"
+    "url": "https://github.com/matei-radu/react-recaptcha-v2.git"
   },
-  "bugs": "https://github.com/matt-block/react-recaptcha-v2/issues",
-  "homepage": "https://github.com/matt-block/react-recaptcha-v2#readme",
-  "author": "Matei Bogdan Radu <matei.radu.92@gmail.com>",
+  "bugs": "https://github.com/matei-radu/react-recaptcha-v2/issues",
+  "homepage": "https://github.com/matei-radu/react-recaptcha-v2#readme",
+  "author": "Matei Bogdan Radu <opensource@mateiradu.dev>",
   "license": "MIT",
   "private": false,
   "scripts": {
@@ -29,19 +29,19 @@
     "build:definitions": "tsc --emitDeclarationOnly"
   },
   "dependencies": {
-    "nanoid": "^2.0.0"
+    "nanoid": "^2.0.3"
   },
   "devDependencies": {
-    "@types/nanoid": "^1.2.0",
-    "@types/react": "^16.7.3",
-    "husky": "^1.1.3",
-    "lint-staged": "^8.0.4",
-    "prettier": "^1.15.2",
-    "rollup": "^0.67.1",
-    "rollup-plugin-copy": "^0.2.3",
-    "rollup-plugin-typescript": "^1.0.0",
+    "@types/nanoid": "^2.0.0",
+    "@types/react": "^16.8.19",
+    "husky": "^2.4.0",
+    "lint-staged": "^8.2.0",
+    "prettier": "^1.18.2",
+    "rollup": "^1.14.4",
+    "rollup-plugin-copy": "^2.0.1",
+    "rollup-plugin-typescript": "^1.0.1",
     "tslib": "^1.9.3",
-    "typescript": "^3.1.6"
+    "typescript": "^3.5.1"
   },
   "peerDependencies": {
     "react": "^16.0.0"
