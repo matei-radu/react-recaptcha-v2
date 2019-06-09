@@ -12,11 +12,15 @@ export default {
   input: "src/index.tsx",
   output: {
     file: "lib/index.esm.js",
-    format: "esm",
-    external: ["react"]
+    format: "esm"
   },
   plugins: [
     typescript(),
-    copy({ "src/index.js.flow": "lib/index.esm.js.flow" })
-  ]
+    copy({
+      targets: {
+        "src/index.js.flow": "lib/index.esm.js.flow"
+      }
+    })
+  ],
+  external: ["react", "nanoid"]
 };
