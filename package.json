@@ -1,6 +1,6 @@
 {
   "name": "@matt-block/react-recaptcha-v2",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Google reCAPTCHA v2 React component that does not pollute the DOM",
   "main": "lib/index.esm.js",
   "types": "types/index.d.ts",
@@ -17,10 +17,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/matt-block/react-recaptcha-v2.git"
+    "url": "https://github.com/matei-radu/react-recaptcha-v2.git"
   },
-  "bugs": "https://github.com/matt-block/react-recaptcha-v2/issues",
-  "homepage": "https://github.com/matt-block/react-recaptcha-v2#readme",
+  "bugs": "https://github.com/matei-radu/react-recaptcha-v2/issues",
+  "homepage": "https://github.com/matei-radu/react-recaptcha-v2#readme",
   "author": "Matei Bogdan Radu <opensource@mateiradu.dev>",
   "license": "MIT",
   "private": false,
