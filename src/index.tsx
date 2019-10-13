@@ -92,7 +92,7 @@ class ReCaptcha extends Component<ReCaptchaProps> {
 
     // Remove additional scripts added by the original one.
     const allScripts = Array.from(document.scripts);
-    const reCaptchaSrcPattern = /https:\/\/www.gstatic.com\/recaptcha\/api2\/.*.js$/;
+    const reCaptchaSrcPattern = /https:\/\/www.gstatic.com\/recaptcha\/releases\/.*.js$/;
     const additionalScripts = allScripts.filter(script =>
       reCaptchaSrcPattern.test(script.src)
     );
