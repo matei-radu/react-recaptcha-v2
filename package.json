@@ -1,6 +1,6 @@
 {
   "name": "@matt-block/react-recaptcha-v2",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Google reCAPTCHA v2 React component that does not pollute the DOM",
   "main": "lib/index.esm.js",
   "types": "types/index.d.ts",
