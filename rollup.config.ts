@@ -6,6 +6,7 @@
  */
 
 import typescript from "@rollup/plugin-typescript";
+import nodeResolve from "@rollup/plugin-node-resolve";
 import copy from "rollup-plugin-copy";
 
 export default {
@@ -15,6 +16,7 @@ export default {
     format: "esm",
   },
   plugins: [
+    nodeResolve(),
     typescript(),
     copy({
       targets: [
@@ -22,5 +24,5 @@ export default {
       ],
     }),
   ],
-  external: ["react", "nanoid"],
+  external: ["react"],
 };

@@ -6,7 +6,9 @@
  */
 
 import React, { Component } from "react";
-import nanoid from "nanoid";
+// It is safe to use the non-secure version because the ids are not used
+// for anything concerning security.
+import { nanoid } from "nanoid/non-secure";
 
 interface ReCaptchaProps {
   siteKey: string;
