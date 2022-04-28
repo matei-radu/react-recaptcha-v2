@@ -26,23 +26,23 @@
   "private": false,
   "scripts": {
     "build": "rollup -c rollup.config.ts",
-    "build:definitions": "tsc --emitDeclarationOnly",
+    "postbuild": "tsc --emitDeclarationOnly",
     "prepare": "husky install"
   },
   "dependencies": {
     "nanoid": "^2.0.3"
   },
   "devDependencies": {
+    "@rollup/plugin-typescript": "^8.3.2",
     "@types/nanoid": "^2.0.0",
     "@types/react": "^18.0.8",
     "husky": "^7.0.4",
     "lint-staged": "^12.4.1",
     "prettier": "^2.6.2",
-    "rollup": "^1.14.4",
-    "rollup-plugin-copy": "^2.0.1",
-    "rollup-plugin-typescript": "^1.0.1",
-    "tslib": "^1.9.3",
-    "typescript": "^3.5.1"
+    "rollup": "^2.70.2",
+    "rollup-plugin-copy": "^3.4.0",
+    "tslib": "^1.14.1",
+    "typescript": "^3.7.5"
   },
   "peerDependencies": {
     "react": "^16.0.0 || ^17.0.0 || ^18.0.0"
