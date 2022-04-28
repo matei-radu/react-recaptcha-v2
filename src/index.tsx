@@ -58,7 +58,7 @@ class ReCaptcha extends Component<ReCaptchaProps, {}> {
 
     // Maybe the script was added but not from this component.
     const availableScripts = Array.from(document.scripts);
-    return availableScripts.find(script => script.src === this.scriptSrc);
+    return availableScripts.find((script) => script.src === this.scriptSrc);
   }
 
   createScriptElement(): HTMLScriptElement {
@@ -92,8 +92,9 @@ class ReCaptcha extends Component<ReCaptchaProps, {}> {
 
     // Remove additional scripts added by the original one.
     const allScripts = Array.from(document.scripts);
-    const reCaptchaSrcPattern = /https:\/\/www.gstatic.com\/recaptcha\/releases\/.*.js$/;
-    const additionalScripts = allScripts.filter(script =>
+    const reCaptchaSrcPattern =
+      /https:\/\/www.gstatic.com\/recaptcha\/releases\/.*.js$/;
+    const additionalScripts = allScripts.filter((script) =>
       reCaptchaSrcPattern.test(script.src)
     );
     additionalScripts.map(this.removeChild);
@@ -108,7 +109,7 @@ class ReCaptcha extends Component<ReCaptchaProps, {}> {
 
   mutationCallbackGenerator() {
     return (mutations: MutationRecord[]) => {
-      mutations.forEach(mutation => {
+      mutations.forEach((mutation) => {
         if (
           mutation.type === "childList" &&
           mutation.target === document.body &&
