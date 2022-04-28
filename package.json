@@ -1,12 +1,12 @@
 {
   "name": "@matt-block/react-recaptcha-v2",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Google reCAPTCHA v2 React component that does not pollute the DOM",
   "main": "lib/index.esm.js",
   "types": "types/index.d.ts",
   "files": [
     "lib/",
-    "types",
+    "types/",
     "README.md",
     "LICENSE"
   ],
@@ -33,7 +33,7 @@
   },
   "devDependencies": {
     "@types/nanoid": "^2.0.0",
-    "@types/react": "^16.8.19",
+    "@types/react": "^18.0.8",
     "husky": "^2.4.0",
     "lint-staged": "^8.2.0",
     "prettier": "^1.18.2",
@@ -44,7 +44,7 @@
     "typescript": "^3.5.1"
   },
   "peerDependencies": {
-    "react": "^16.0.0"
+    "react": "^16.0.0 || ^17.0.0 || ^18.0.0"
   },
   "husky": {
     "hooks": {

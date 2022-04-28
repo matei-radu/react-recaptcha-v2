@@ -12,7 +12,6 @@ built with [Typescript][typescript] and [Rollup][rollup].
 - [x] Can safely add multiple `<ReCaptcha>` components in the same page, they
       will not conflict with each other.
 - [x] Typescript and Flow definitions
-- [x] Actively developed
 
 ### DOM Pollution and Cleanup
 
@@ -42,11 +41,11 @@ from the compatibility table below (if available):
 Install the package via Yarn or npm:
 
 ```
-yarn add @matt-block/react-recaptcha-v2
+npm install --save @matt-block/react-recaptcha-v2
 
 // or
 
-npm install --save @matt-block/react-recaptcha-v2
+yarn add @matt-block/react-recaptcha-v2
 ```
 
 That is all, no `<script>` needs to be added to your main HTML file as this

@@ -17,7 +17,7 @@ interface ReCaptchaProps {
   onError?: () => any;
 }
 
-class ReCaptcha extends Component<ReCaptchaProps> {
+class ReCaptcha extends Component<ReCaptchaProps, {}> {
   private scriptSrc = "https://www.google.com/recaptcha/api.js";
   private testSiteKey = "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI";
   private observer = new MutationObserver(this.mutationCallbackGenerator());
