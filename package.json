@@ -30,19 +30,19 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "nanoid": "^3.3.3"
+    "nanoid": "^3.3.4"
   },
   "devDependencies": {
-    "@rollup/plugin-node-resolve": "^13.2.1",
-    "@rollup/plugin-typescript": "^8.3.2",
-    "@types/react": "^18.0.8",
+    "@rollup/plugin-node-resolve": "^13.3.0",
+    "@rollup/plugin-typescript": "^8.5.0",
+    "@types/react": "^18.0.28",
     "husky": "^7.0.4",
-    "lint-staged": "^12.4.1",
-    "prettier": "^2.6.2",
-    "rollup": "^2.70.2",
+    "lint-staged": "^12.5.0",
+    "prettier": "^2.8.4",
+    "rollup": "^2.79.1",
     "rollup-plugin-copy": "^3.4.0",
     "tslib": "^1.14.1",
-    "typescript": "^3.7.5"
+    "typescript": "3.8.3"
   },
   "peerDependencies": {
     "react": "^16.0.0 || ^17.0.0 || ^18.0.0"
