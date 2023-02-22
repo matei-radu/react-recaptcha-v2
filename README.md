@@ -4,14 +4,14 @@
 ![license: mit][license_shield] [![code style: prettier][prettier_shield]][prettier]
 
 React wrapper component for Google's [reCAPTCHA v2][recaptcha_site] service,
-built with [Typescript][typescript] and [Rollup][rollup].
+built with [TypeScript][typescript] and [Rollup][rollup].
 
 ### Features
 
 - [x] Does not pollute the DOM by cleaning up on unmount (see below)
 - [x] Can safely add multiple `<ReCaptcha>` components in the same page, they
       will not conflict with each other.
-- [x] Typescript and Flow definitions
+- [x] TypeScript and Flow type declarations
 
 ### DOM Pollution and Cleanup
 
@@ -99,7 +99,7 @@ This source code is licensed under the MIT license found in the
 
 <!-- Sources -->
 
-[license]: https://github.com/matt-block/react-recaptcha-v2/blob/master/LICENSE
+[license]: https://github.com/matei-radu/react-recaptcha-v2/blob/master/LICENSE
 [license_shield]: https://img.shields.io/badge/license-MIT-blue.svg
 [prettier_shield]: https://img.shields.io/badge/code_style-prettier-ff69b4.svg
 [prettier]: https://github.com/prettier/prettier
@@ -109,6 +109,6 @@ This source code is licensed under the MIT license found in the
 [recaptcha_docs]: https://developers.google.com/recaptcha/docs/display
 [recaptcha_site]: https://developers.google.com/recaptcha/
 [recaptcha_testkey]: https://developers.google.com/recaptcha/docs/faq#automated_test
-[cleanup_gif]: https://raw.githubusercontent.com/matt-block/react-recaptcha-v2/master/assets/cleanup.gif
+[cleanup_gif]: https://raw.githubusercontent.com/matei-radu/react-recaptcha-v2/master/assets/cleanup.gif
 [typescript]: http://www.typescriptlang.org/
 [rollup]: https://rollupjs.org
