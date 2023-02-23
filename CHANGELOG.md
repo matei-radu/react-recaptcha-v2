@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.9] - 2022-02-23
+
 ### Added
 
 - This changelog.
@@ -124,7 +126,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `ReCaptcha`: React component to render a Google reCAPTCHA v2 widget.
 
-[unreleased]: https://github.com/matei-radu/react-recaptcha-v2/compare/v1.0.8...HEAD
+[unreleased]: https://github.com/matei-radu/react-recaptcha-v2/compare/v1.0.9...HEAD
+[1.0.9]: https://github.com/matei-radu/react-recaptcha-v2/compare/v1.0.8...v1.0.9
 [1.0.8]: https://github.com/matei-radu/react-recaptcha-v2/compare/v1.0.7...v1.0.8
 [1.0.7]: https://github.com/matei-radu/react-recaptcha-v2/compare/v1.0.6...v1.0.7
 [1.0.6]: https://github.com/matei-radu/react-recaptcha-v2/compare/v1.0.5...v1.0.6
