@@ -32,6 +32,62 @@ const IMPLICIT_SCRIPT_SRC_PATTERN =
  */
 const TEST_SITE_KEY = "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI";
 
+/**
+ * Returns the existing main reCAPTCHA `script` element if it exists.
+ */
+const getMainScriptElement = (): HTMLScriptElement | undefined => {
+  if (document.getElementById(MAIN_SCRIPT_ID) !== null) {
+    return document.getElementById(MAIN_SCRIPT_ID) as HTMLScriptElement;
+  }
+
+  // Maybe the script was added but not from this component.
+  const availableScripts = Array.from(document.scripts);
+  return availableScripts.find((script) => script.src === MAIN_SCRIPT_SRC);
+};
+
+/**
+ * Creates a main reCAPTCHA `script` element.
+ */
+const createMainScriptElement = (): HTMLScriptElement => {
+  const scriptElement = document.createElement("script");
+  scriptElement.id = MAIN_SCRIPT_ID;
+  scriptElement.src = MAIN_SCRIPT_SRC;
+  scriptElement.async = true;
+  scriptElement.defer = true;
+
+  return scriptElement;
+};
+
+/**
+ * Removes the given `element` from its parent.
+ */
+const removeChildElement = (element: HTMLElement): void => {
+  const parentNode = element.parentNode;
+  if (parentNode !== null) {
+    parentNode.removeChild(element);
+  }
+};
+
+/**
+ * Checks if a node is a reCAPTCHA hidden `div`.
+ *
+ * reCAPTCHA adds a hidden `div` to the document to function correctly.
+ * However, this `div` does not have an ID or classes assigned, so this
+ * function will check for some known style properties.
+ *
+ * Note that these known properties might change over time, so they might
+ * need to be revised from time to time.
+ */
+const isNodeRecaptchaHiddenDiv = (node: Node): boolean => {
+  const div = node as HTMLDivElement;
+  return (
+    div.style &&
+    div.style.visibility === "hidden" &&
+    div.style.top === "-10000px" &&
+    div.style.position === "absolute"
+  );
+};
+
 interface ReCaptchaProps {
   siteKey: string;
   theme?: "light" | "dark";
@@ -67,30 +123,10 @@ class ReCaptcha extends Component<ReCaptchaProps, {}> {
    * Appends the reCAPTCHA script to the document body if necessary.
    */
   appendScript() {
-    if (!this.getScriptIfAvailable()) {
-      const reCaptchaScript = this.createScriptElement();
+    if (!getMainScriptElement()) {
+      const reCaptchaScript = createMainScriptElement();
       document.body.appendChild(reCaptchaScript);
     }
-  }
-
-  getScriptIfAvailable(): HTMLScriptElement | undefined {
-    if (document.getElementById(MAIN_SCRIPT_ID) !== null) {
-      return document.getElementById(MAIN_SCRIPT_ID) as HTMLScriptElement;
-    }
-
-    // Maybe the script was added but not from this component.
-    const availableScripts = Array.from(document.scripts);
-    return availableScripts.find((script) => script.src === MAIN_SCRIPT_SRC);
-  }
-
-  createScriptElement(): HTMLScriptElement {
-    const reCaptchaScript = document.createElement("script");
-    reCaptchaScript.id = MAIN_SCRIPT_ID;
-    reCaptchaScript.src = MAIN_SCRIPT_SRC;
-    reCaptchaScript.async = true;
-    reCaptchaScript.defer = true;
-
-    return reCaptchaScript;
   }
 
   /**
@@ -99,9 +135,9 @@ class ReCaptcha extends Component<ReCaptchaProps, {}> {
    */
   private cleanup() {
     // Remove the original script.
-    const script = this.getScriptIfAvailable();
+    const script = getMainScriptElement();
     if (script) {
-      this.removeChild(script);
+      removeChildElement(script);
     }
 
     // Remove callback functions from window.
@@ -110,21 +146,14 @@ class ReCaptcha extends Component<ReCaptchaProps, {}> {
     delete (window as any)[this.errorCallbackId];
 
     // Remove additional hidden div added by the script.
-    this.removeChild(this.hiddenDiv);
+    removeChildElement(this.hiddenDiv);
 
     // Remove additional scripts added by the original one.
     const allScripts = Array.from(document.scripts);
     const additionalScripts = allScripts.filter((script) =>
       IMPLICIT_SCRIPT_SRC_PATTERN.test(script.src)
     );
-    additionalScripts.map(this.removeChild);
-  }
-
-  removeChild(element: HTMLElement) {
-    const parentNode = element.parentNode;
-    if (parentNode !== null) {
-      parentNode.removeChild(element);
-    }
+    additionalScripts.map(removeChildElement);
   }
 
   mutationCallbackGenerator() {
@@ -134,27 +163,13 @@ class ReCaptcha extends Component<ReCaptchaProps, {}> {
           mutation.type === "childList" &&
           mutation.target === document.body &&
           mutation.addedNodes.length === 1 &&
-          this.isNodeReCaptchaHiddenDiv(mutation.addedNodes[0])
+          isNodeRecaptchaHiddenDiv(mutation.addedNodes[0])
         ) {
           this.hiddenDiv = mutation.addedNodes[0] as HTMLDivElement;
           this.observer.disconnect();
         }
       });
     };
-  }
-
-  /**
-   * Checks if a node is a reCAPTCHA hidden div
-   * (reCAPTCHA adds one to the document).
-   */
-  isNodeReCaptchaHiddenDiv(node: Node) {
-    const div = node as HTMLDivElement;
-    return (
-      div.style &&
-      div.style.visibility === "hidden" &&
-      div.style.top === "-10000px" &&
-      div.style.position === "absolute"
-    );
   }
 
   render() {
