@@ -11,6 +11,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - This changelog.
 
+### Changed
+
+- Bump `nanoid` to version `3.3.4`.
+- Bump `@rollup/plugin-node-resolve` to version `13.3.0`.
+- Bump `@rollup/plugin-typescript` to version `8.5.0`.
+- Bump `@types/react` to version `18.0.28`.
+- Bump `lint-staged` to version `12.5.0`.
+- Bump `prettier` to version `2.8.4`.
+- Bump `rollup` to version `2.79.1`.
+- Bump `typescript` to version `3.8.3`.
+
 ## [1.0.8] - 2022-04-28
 
 ### Added
