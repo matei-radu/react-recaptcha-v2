@@ -10,6 +10,28 @@ import React, { Component } from "react";
 // for anything concerning security.
 import { nanoid } from "nanoid/non-secure";
 
+/** ID assigned to the main reCAPTCHA script. */
+const MAIN_SCRIPT_ID = "recaptcha";
+
+/** Source of the main reCAPTCHA script. */
+const MAIN_SCRIPT_SRC = "https://www.google.com/recaptcha/api.js";
+
+/**
+ * Pattern of the second, implicit reCAPTCHA script.
+ *
+ * Because this second script is versioned it is not possible to have a
+ * simple, fixed string.
+ */
+const IMPLICIT_SCRIPT_SRC_PATTERN =
+  /https:\/\/www.gstatic.com\/recaptcha\/releases\/.*.js$/;
+
+/**
+ * Test key for frontend applications.
+ *
+ * This key is the same for everyone, so it is safe to have here.
+ */
+const TEST_SITE_KEY = "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI";
+
 interface ReCaptchaProps {
   siteKey: string;
   theme?: "light" | "dark";
@@ -20,8 +42,6 @@ interface ReCaptchaProps {
 }
 
 class ReCaptcha extends Component<ReCaptchaProps, {}> {
-  private scriptSrc = "https://www.google.com/recaptcha/api.js";
-  private testSiteKey = "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI";
   private observer = new MutationObserver(this.mutationCallbackGenerator());
   private hiddenDiv = document.createElement("div"); // Just a placeholder.
   private id = nanoid();
@@ -54,19 +74,19 @@ class ReCaptcha extends Component<ReCaptchaProps, {}> {
   }
 
   getScriptIfAvailable(): HTMLScriptElement | undefined {
-    if (document.getElementById("recaptcha") !== null) {
-      return document.getElementById("recaptcha") as HTMLScriptElement;
+    if (document.getElementById(MAIN_SCRIPT_ID) !== null) {
+      return document.getElementById(MAIN_SCRIPT_ID) as HTMLScriptElement;
     }
 
     // Maybe the script was added but not from this component.
     const availableScripts = Array.from(document.scripts);
-    return availableScripts.find((script) => script.src === this.scriptSrc);
+    return availableScripts.find((script) => script.src === MAIN_SCRIPT_SRC);
   }
 
   createScriptElement(): HTMLScriptElement {
     const reCaptchaScript = document.createElement("script");
-    reCaptchaScript.id = "recaptcha";
-    reCaptchaScript.src = this.scriptSrc;
+    reCaptchaScript.id = MAIN_SCRIPT_ID;
+    reCaptchaScript.src = MAIN_SCRIPT_SRC;
     reCaptchaScript.async = true;
     reCaptchaScript.defer = true;
 
@@ -94,10 +114,8 @@ class ReCaptcha extends Component<ReCaptchaProps, {}> {
 
     // Remove additional scripts added by the original one.
     const allScripts = Array.from(document.scripts);
-    const reCaptchaSrcPattern =
-      /https:\/\/www.gstatic.com\/recaptcha\/releases\/.*.js$/;
     const additionalScripts = allScripts.filter((script) =>
-      reCaptchaSrcPattern.test(script.src)
+      IMPLICIT_SCRIPT_SRC_PATTERN.test(script.src)
     );
     additionalScripts.map(this.removeChild);
   }
@@ -145,7 +163,7 @@ class ReCaptcha extends Component<ReCaptchaProps, {}> {
       <div
         id={this.id}
         className="g-recaptcha"
-        data-sitekey={siteKey === "test" ? this.testSiteKey : siteKey}
+        data-sitekey={siteKey === "test" ? TEST_SITE_KEY : siteKey}
         data-theme={theme}
         data-size={size}
         data-callback={this.successCallbackId}
