@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Refactor `ReCaptcha` from class-based to functional component using React Hooks.
+- Change the minimum supported React version to `16.8.0`, which is the first React version to introduce Hooks.
 - Refactor constants outside the `ReCaptcha` component.
 - Refactor some `ReCaptcha` methods as static functions outside the component.
 - Update Rollup configuration to be more type-safe.

@@ -8,10 +8,10 @@ built with [TypeScript][typescript] and [Rollup][rollup].
 
 ### Features
 
-- [x] Does not pollute the DOM by cleaning up on unmount (see below)
-- [x] Can safely add multiple `<ReCaptcha>` components in the same page, they
-      will not conflict with each other.
-- [x] TypeScript and Flow type declarations
+- Does not pollute the DOM by cleaning up on unmount (see below)
+- Can safely add multiple `<ReCaptcha>` components in the same page, they
+  will not conflict with each other.
+- TypeScript and Flow type declarations
 
 ### DOM Pollution and Cleanup
 
@@ -32,13 +32,14 @@ This library will always target the most recent React package. If you are
 using an older release of React, use the correct version of this library
 from the compatibility table below (if available):
 
-|  React   | Library |
-| :------: | :-----: |
-| >=16.0.0 | latest  |
+|       React       |                  Library                  |     Status      | End-of-Life |
+| :---------------: | :---------------------------------------: | :-------------: | :---------: |
+|    `>=16.8.0`     |    [![npm (scoped)][npm_shield]][npm]     |   **Active**    |      -      |
+| `16.0.0 - 16.7.x` | [![npm v1 (scoped)][npm_1_shield]][npm_1] | **Maintenance** | 2023-06-01  |
 
 ## Installation
 
-Install the package via Yarn or npm:
+Install the package via npm or Yarn:
 
 ```
 npm install --save @matt-block/react-recaptcha-v2
@@ -54,25 +55,23 @@ is handled automatically by the component.
 ## Usage
 
 ```javascript
-import React, { Component } from "react";
+import React from "react";
 import ReCaptcha from "@matt-block/react-recaptcha-v2";
 
-class MyFormComponent extends Component {
-  // other methods and callbacks...
+const MyFormComponent = () => {
+  // other logic and hooks...
 
-  render() {
-    return (
-      {/* other components to render... */}
-      <ReCaptcha
-        siteKey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
-        theme="light"
-        size="normal"
-        onSuccess={(captcha) => console.log(`Successful, result is ${captcha}`)}
-        onExpire={() => console.log("Verification has expired, re-verify.")}
-        onError={() => console.log("Something went wrong, check your conenction")}
-      />
-    );
-  }
+  return (
+    {/* other components to render... */}
+    <ReCaptcha
+      siteKey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+      theme="light"
+      size="normal"
+      onSuccess={(captcha) => console.log(`Successful, result is ${captcha}`)}
+      onError={() => console.log("Something went wrong, check your conenction")}
+      onExpire={() => console.log("Verification has expired, re-verify.")}
+    />
+  );
 }
 ```
 
@@ -87,8 +86,8 @@ The only mandatory prop is `siteKey` which can be obtained from the
 | `theme`     | `light` \| `dark`     | `light`     | The color theme of the widget.                                                                                                                                                                                                                       |
 | `size`      | `normal` \| `compact` | `normal`    | The size of the widget.                                                                                                                                                                                                                              |
 | `onSuccess` | `function`            | `undefined` | Callback function, executed when the user submits a successful response. The response token is passed to your callback.                                                                                                                              |
-| `onExpired` | `function`            | `undefined` | Callback function, executed when the reCAPTCHA response expires and the user needs to re-verify.                                                                                                                                                     |
 | `onError`   | `function`            | `undefined` | Callback function, executed when reCAPTCHA encounters an error (usually network connectivity) and cannot continue until connectivity is restored. If you specify a function here, you are responsible for informing the user that they should retry. |
+| `onExpire`  | `function`            | `undefined` | Callback function, executed when the reCAPTCHA response expires and the user needs to re-verify.                                                                                                                                                     |
 
 ## License
 
@@ -104,7 +103,9 @@ This source code is licensed under the MIT license found in the
 [prettier_shield]: https://img.shields.io/badge/code_style-prettier-ff69b4.svg
 [prettier]: https://github.com/prettier/prettier
 [npm]: https://www.npmjs.com/package/@matt-block/react-recaptcha-v2
-[npm_shield]: https://img.shields.io/npm/v/@matt-block/react-recaptcha-v2.svg
+[npm_shield]: https://img.shields.io/npm/v/@matt-block/react-recaptcha-v2/latest
+[npm_1]: https://www.npmjs.com/package/@matt-block/react-recaptcha-v2/v/1.0.9
+[npm_1_shield]: https://img.shields.io/badge/npm-v1.0.9-blue
 [recaptcha_admin]: https://www.google.com/recaptcha/admin
 [recaptcha_docs]: https://developers.google.com/recaptcha/docs/display
 [recaptcha_site]: https://developers.google.com/recaptcha/
