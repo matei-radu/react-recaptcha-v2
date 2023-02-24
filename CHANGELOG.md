@@ -10,6 +10,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Refactor constants outside the `ReCaptcha` component.
+- Refactor some `ReCaptcha` methods as static functions outside the component.
+- Update Rollup configuration to be more type-safe.
+- Bump `@rollup/plugin-node-resolve` to version `15.0.1`.
+- Bump `@rollup/plugin-typescript` to version `11.0.0`.
+- Bump `rollup` to version `3.17.2`.
 
 ## [1.0.9] - 2022-02-23
 
