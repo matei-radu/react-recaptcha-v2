@@ -37,6 +37,15 @@ from the compatibility table below (if available):
 |    `>=16.8.0`     |    [![npm (scoped)][npm_shield]][npm]     |   **Active**    |      -      |
 | `16.0.0 - 16.7.x` | [![npm v1 (scoped)][npm_1_shield]][npm_1] | **Maintenance** | 2023-06-01  |
 
+### Migrating from 1.x to 2.x
+
+The current version requires React `16.8.0` or above. If you are stuck with an older version, you could:
+
+- Not migrate to version 2 and continue to use a 1.x release, though support will end soon.
+- Move to a different package for Google reCAPTCHA v2, like:
+  - [react-google-recaptcha][recaptcha_alternative_1] which requires React `16.4.1` or above.
+  - [react-recaptcha][recaptcha_alternative_2] which required React `15.5.4` or above
+
 ## Installation
 
 Install the package via npm or Yarn:
@@ -113,3 +122,5 @@ This source code is licensed under the MIT license found in the
 [cleanup_gif]: https://raw.githubusercontent.com/matei-radu/react-recaptcha-v2/master/assets/cleanup.gif
 [typescript]: http://www.typescriptlang.org/
 [rollup]: https://rollupjs.org
+[recaptcha_alternative_1]: https://github.com/dozoisch/react-google-recaptcha
+[recaptcha_alternative_2]: https://github.com/appleboy/react-recaptcha
