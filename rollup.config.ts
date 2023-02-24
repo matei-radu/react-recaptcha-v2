@@ -5,11 +5,12 @@
  * file in the root directory of this source tree.
  */
 
+import { defineConfig } from "rollup";
 import typescript from "@rollup/plugin-typescript";
 import nodeResolve from "@rollup/plugin-node-resolve";
 import copy from "rollup-plugin-copy";
 
-export default {
+export default defineConfig({
   input: "src/index.tsx",
   output: {
     file: "lib/index.esm.js",
@@ -25,4 +26,4 @@ export default {
     }),
   ],
   external: ["react"],
-};
+});
