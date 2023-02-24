@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Change the compiler target from `es5` to `es2015` which has been round for 7+ years. It is time to move on.
 - Refactor `ReCaptcha` from class-based to functional component using React Hooks.
 - Change the minimum supported React version to `16.8.0`, which is the first React version to introduce Hooks.
 - Refactor constants outside the `ReCaptcha` component.
