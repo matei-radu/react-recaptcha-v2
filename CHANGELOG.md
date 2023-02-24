@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Change the minimum supported React version to `16.8.0`, which is the first React version to introduce Hooks.
 - Refactor constants outside the `ReCaptcha` component.
 - Refactor some `ReCaptcha` methods as static functions outside the component.
+- Update Flow declarations to reflect changes made to `ReCaptcha`.
 - Update Rollup configuration to be more type-safe.
 - Bump `@rollup/plugin-node-resolve` to version `15.0.1`.
 - Bump `@rollup/plugin-typescript` to version `11.0.0`.
