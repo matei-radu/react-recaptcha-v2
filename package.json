@@ -29,6 +29,7 @@
     "build:compile": "rollup --config rollup.config.ts --configPlugin @rollup/plugin-typescript",
     "build:ts-decl": "tsc --emitDeclarationOnly",
     "build:clean": "shx rm -rf lib types",
+    "typecheck": "tsc --noEmit",
     "prepare": "husky install"
   },
   "dependencies": {

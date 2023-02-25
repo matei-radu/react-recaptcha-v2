@@ -98,6 +98,10 @@ The only mandatory prop is `siteKey` which can be obtained from the
 | `onError`   | `function`            | `undefined` | Callback function, executed when reCAPTCHA encounters an error (usually network connectivity) and cannot continue until connectivity is restored. If you specify a function here, you are responsible for informing the user that they should retry. |
 | `onExpire`  | `function`            | `undefined` | Callback function, executed when the reCAPTCHA response expires and the user needs to re-verify.                                                                                                                                                     |
 
+## Contributing
+
+If you are looking to contribute to this project, check [CONTRIBUTING.md][contributing].
+
 ## License
 
 Copyright (c) 2018-present Matei Bogdan Radu.
@@ -107,7 +111,7 @@ This source code is licensed under the MIT license found in the
 
 <!-- Sources -->
 
-[license]: https://github.com/matei-radu/react-recaptcha-v2/blob/master/LICENSE
+[license]: https://github.com/matei-radu/react-recaptcha-v2/blob/main/LICENSE
 [license_shield]: https://img.shields.io/badge/license-MIT-blue.svg
 [prettier_shield]: https://img.shields.io/badge/code_style-prettier-ff69b4.svg
 [prettier]: https://github.com/prettier/prettier
@@ -119,8 +123,9 @@ This source code is licensed under the MIT license found in the
 [recaptcha_docs]: https://developers.google.com/recaptcha/docs/display
 [recaptcha_site]: https://developers.google.com/recaptcha/
 [recaptcha_testkey]: https://developers.google.com/recaptcha/docs/faq#automated_test
-[cleanup_gif]: https://raw.githubusercontent.com/matei-radu/react-recaptcha-v2/master/assets/cleanup.gif
+[cleanup_gif]: https://raw.githubusercontent.com/matei-radu/react-recaptcha-v2/main/assets/cleanup.gif
 [typescript]: http://www.typescriptlang.org/
 [rollup]: https://rollupjs.org
+[contributing]: https://github.com/matei-radu/react-recaptcha-v2/blob/main/CONTRIBUTING.md
 [recaptcha_alternative_1]: https://github.com/dozoisch/react-google-recaptcha
 [recaptcha_alternative_2]: https://github.com/appleboy/react-recaptcha
