@@ -53,3 +53,12 @@ use [prettier](https://prettier.io/) to automatically format the code staged for
 if your staged files change a bit when you run `git commit`.
 
 Some developers might find this annoying, however, this ensures that all code committed is formatted consistently.
+
+## Testing
+
+`ReCaptcha` doesn't do much as a React component, so there is also not much to test. However, the main feature of
+cleaning up the DOM must be tested.
+
+To do that, simple React unit testing is not sufficient. Instead, the `test` directory contains a minimal CRA
+application to run end-to-end tests using [Puppeteer](https://github.com/puppeteer/puppeteer). This way it is possible to inspect the entire DOM and see what is
+added/changed and what is removed/reverted.

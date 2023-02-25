@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Test project for running tests on `ReCaptcha` with [Puppeteer](https://github.com/puppeteer/puppeteer).
+
 ### Changed
 
 - Change the compiler target from `es5` to `es2015` which has been round for 7+ years. It is time to move on.
