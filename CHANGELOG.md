@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Updating TypeScript to v4.9 has fixed Rollup not being able to output type declarations, so the npm script
+  `build:ts-decl` is removed.
+- TypeScript declarations are now available under `lib` instead of `types`.
+- Bump `tslib` to version `2.5.0`.
+- Bump `typescript` to version `4.9.5`.
+
 ## [2.0.0] - 2022-03-01
 
 ### Added

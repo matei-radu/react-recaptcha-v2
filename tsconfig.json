@@ -5,7 +5,7 @@
     "moduleResolution": "node", // must be set because of module: "es2015" which will default resolution to "classic".
     "lib": ["es2015", "dom"],
     "jsx": "react",
-    "declarationDir": "./types",
+    "outDir": "lib",
     "declaration": true,
     "strict": true,
     "noImplicitAny": true,
