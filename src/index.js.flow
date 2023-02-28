@@ -7,7 +7,7 @@
  * @flow
  */
 
-import { Component } from "react";
+import { ComponentType } from "react";
 
 declare interface ReCaptchaProps {
   siteKey: string;
@@ -18,6 +18,6 @@ declare interface ReCaptchaProps {
   onError?: () => any;
 }
 
-declare class ReCaptcha mixins Component<ReCaptchaProps, void> {}
+declare var ReCaptcha: ComponentType<ReCaptchaProps>;
 
 declare export default typeof ReCaptcha;

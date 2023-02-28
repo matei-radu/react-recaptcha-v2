@@ -5,7 +5,7 @@
  * file in the root directory of this source tree.
  */
 
-import React, { Component } from "react";
+import React, { FC, useEffect, useState } from "react";
 // It is safe to use the non-secure version because the ids are not used
 // for anything concerning security.
 import { nanoid } from "nanoid/non-secure";
@@ -59,6 +59,16 @@ const createMainScriptElement = (): HTMLScriptElement => {
 };
 
 /**
+ * Appends the reCAPTCHA script to the document body if necessary.
+ */
+const appendScript = (): void => {
+  if (!getMainScriptElement()) {
+    const reCaptchaScript = createMainScriptElement();
+    document.body.appendChild(reCaptchaScript);
+  }
+};
+
+/**
  * Removes the given `element` from its parent.
  */
 const removeChildElement = (element: HTMLElement): void => {
@@ -66,6 +76,17 @@ const removeChildElement = (element: HTMLElement): void => {
   if (parentNode !== null) {
     parentNode.removeChild(element);
   }
+};
+
+/**
+ * Removes any reCAPTCHA script that was added implicitly.
+ */
+const removeImplicitRecaptchaScripts = (): void => {
+  const allScripts = Array.from(document.scripts);
+  const additionalScripts = allScripts.filter((script) =>
+    IMPLICIT_SCRIPT_SRC_PATTERN.test(script.src)
+  );
+  additionalScripts.map(removeChildElement);
 };
 
 /**
@@ -88,6 +109,31 @@ const isNodeRecaptchaHiddenDiv = (node: Node): boolean => {
   );
 };
 
+/**
+ * Returns a `MutationCallback` that calls the given `onHiddenDivFound`
+ * callback when a reCAPTCHA hidden div is found.
+ */
+const mutationCallbackGenerator = (
+  onHiddenDivFound: (hiddenDiv: HTMLDivElement) => void
+): MutationCallback => {
+  return (mutations: MutationRecord[]) => {
+    mutations.forEach((mutation) => {
+      if (
+        // There was a DOM tree mutation...
+        mutation.type === "childList" &&
+        // ...on the document body...
+        mutation.target === document.body &&
+        // ...where one node was added...
+        mutation.addedNodes.length === 1 &&
+        // ...and that node is a reCAPTCHA hidden div.
+        isNodeRecaptchaHiddenDiv(mutation.addedNodes[0])
+      ) {
+        onHiddenDivFound(mutation.addedNodes[0] as HTMLDivElement);
+      }
+    });
+  };
+};
+
 interface ReCaptchaProps {
   siteKey: string;
   theme?: "light" | "dark";
@@ -97,96 +143,105 @@ interface ReCaptchaProps {
   onError?: () => any;
 }
 
-class ReCaptcha extends Component<ReCaptchaProps, {}> {
-  private observer = new MutationObserver(this.mutationCallbackGenerator());
-  private hiddenDiv = document.createElement("div"); // Just a placeholder.
-  private id = nanoid();
-  private successCallbackId = nanoid();
-  private expiredCallbackId = nanoid();
-  private errorCallbackId = nanoid();
+/**
+ * React Hook for bind and unbinding reCAPTCHA callbacks to the `window`.
+ */
+const useWindowCallbackBinder = (
+  callbacks: Pick<ReCaptchaProps, "onSuccess" | "onError" | "onExpire">
+) => {
+  const [onSuccessCallbackId] = useState(nanoid());
+  const [onErrorCallbackId] = useState(nanoid());
+  const [onExpireCallbackId] = useState(nanoid());
 
-  componentDidMount() {
-    this.observer.observe(document.body, { childList: true });
-    this.appendScript();
+  const { onSuccess, onError, onExpire } = callbacks;
+  useEffect(() => {
+    // Feels hacky, but it's shorter than extending the Window interface.
+    (window as any)[onSuccessCallbackId] = onSuccess;
+    (window as any)[onExpireCallbackId] = onExpire;
+    (window as any)[onErrorCallbackId] = onError;
 
-    // Feels hacky but it's shorter than extending the Window interface.
-    (window as any)[this.successCallbackId] = this.props.onSuccess;
-    (window as any)[this.expiredCallbackId] = this.props.onExpire;
-    (window as any)[this.errorCallbackId] = this.props.onError;
-  }
-
-  componentWillUnmount() {
-    this.cleanup();
-  }
-
-  /**
-   * Appends the reCAPTCHA script to the document body if necessary.
-   */
-  appendScript() {
-    if (!getMainScriptElement()) {
-      const reCaptchaScript = createMainScriptElement();
-      document.body.appendChild(reCaptchaScript);
-    }
-  }
-
-  /**
-   * Removes the reCAPTCHA script if it's available in the document and
-   * any other elements automatically added by the script.
-   */
-  private cleanup() {
-    // Remove the original script.
-    const script = getMainScriptElement();
-    if (script) {
-      removeChildElement(script);
-    }
-
-    // Remove callback functions from window.
-    delete (window as any)[this.successCallbackId];
-    delete (window as any)[this.expiredCallbackId];
-    delete (window as any)[this.errorCallbackId];
-
-    // Remove additional hidden div added by the script.
-    removeChildElement(this.hiddenDiv);
-
-    // Remove additional scripts added by the original one.
-    const allScripts = Array.from(document.scripts);
-    const additionalScripts = allScripts.filter((script) =>
-      IMPLICIT_SCRIPT_SRC_PATTERN.test(script.src)
-    );
-    additionalScripts.map(removeChildElement);
-  }
-
-  mutationCallbackGenerator() {
-    return (mutations: MutationRecord[]) => {
-      mutations.forEach((mutation) => {
-        if (
-          mutation.type === "childList" &&
-          mutation.target === document.body &&
-          mutation.addedNodes.length === 1 &&
-          isNodeRecaptchaHiddenDiv(mutation.addedNodes[0])
-        ) {
-          this.hiddenDiv = mutation.addedNodes[0] as HTMLDivElement;
-          this.observer.disconnect();
-        }
-      });
+    return () => {
+      delete (window as any)[onSuccessCallbackId];
+      delete (window as any)[onExpireCallbackId];
+      delete (window as any)[onErrorCallbackId];
     };
-  }
+  }, [
+    onSuccess,
+    onSuccessCallbackId,
+    onError,
+    onErrorCallbackId,
+    onExpire,
+    onExpireCallbackId,
+  ]);
 
-  render() {
-    const { siteKey, theme, size } = this.props;
-    return (
-      <div
-        id={this.id}
-        className="g-recaptcha"
-        data-sitekey={siteKey === "test" ? TEST_SITE_KEY : siteKey}
-        data-theme={theme}
-        data-size={size}
-        data-callback={this.successCallbackId}
-        data-expired-callback={this.expiredCallbackId}
-        data-error-callback={this.errorCallbackId}
-      />
+  return {
+    onSuccessCallbackId,
+    onErrorCallbackId,
+    onExpireCallbackId,
+  };
+};
+
+/**
+ * React hook for managing the reCAPTCHA scripts.
+ */
+const useRecaptchaScripts = () => {
+  useEffect(() => {
+    appendScript();
+
+    return () => {
+      const script = getMainScriptElement();
+      if (script) {
+        removeChildElement(script);
+      }
+      removeImplicitRecaptchaScripts();
+    };
+  }, []);
+};
+
+/**
+ * React Hook for managing the reCAPTCHA hidden div that will eventually
+ * be added to the DOM.
+ */
+const useRecaptchaHiddenDivManager = () => {
+  useEffect(() => {
+    let hiddenDiv: HTMLDivElement | null;
+    const observer = new MutationObserver(
+      mutationCallbackGenerator((div) => {
+        hiddenDiv = div;
+      })
     );
-  }
-}
+    observer.observe(document.body, { childList: true });
+
+    return () => {
+      observer.disconnect();
+      if (hiddenDiv) {
+        removeChildElement(hiddenDiv);
+      }
+    };
+  }, []);
+};
+
+const ReCaptcha: FC<ReCaptchaProps> = (props) => {
+  const { siteKey, theme, size, ...callbacks } = props;
+  const { onSuccessCallbackId, onErrorCallbackId, onExpireCallbackId } =
+    useWindowCallbackBinder(callbacks);
+
+  useRecaptchaHiddenDivManager();
+  useRecaptchaScripts();
+  const [id] = useState(nanoid());
+
+  return (
+    <div
+      id={id}
+      className="g-recaptcha"
+      data-sitekey={siteKey === "test" ? TEST_SITE_KEY : siteKey}
+      data-theme={theme}
+      data-size={size}
+      data-callback={onSuccessCallbackId}
+      data-error-callback={onErrorCallbackId}
+      data-expired-callback={onExpireCallbackId}
+    />
+  );
+};
 
 export default ReCaptcha;

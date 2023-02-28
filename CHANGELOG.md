@@ -7,16 +7,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.0] - 2022-03-01
+
+### Added
+
+- Test project for running tests on `ReCaptcha` with [Puppeteer](https://github.com/puppeteer/puppeteer).
+
 ### Changed
 
+- Change the compiler target from `es5` to `es2015` which has been round for 7+ years. It is time to move on.
+- Refactor `ReCaptcha` from class-based to functional component using React Hooks.
+- Change the minimum supported React version to `16.8.0`, which is the first React version to introduce Hooks.
 - Refactor constants outside the `ReCaptcha` component.
 - Refactor some `ReCaptcha` methods as static functions outside the component.
+- Update Flow declarations to reflect changes made to `ReCaptcha`.
 - Update Rollup configuration to be more type-safe.
 - Bump `@rollup/plugin-node-resolve` to version `15.0.1`.
 - Bump `@rollup/plugin-typescript` to version `11.0.0`.
 - Bump `rollup` to version `3.17.2`.
+- Improve build process and commands with `npm-run-all` and `shx`. This also allows the project to be developed using
+  any platform.
 
-## [1.0.9] - 2022-02-23
+## [1.0.9] - 2023-02-23
 
 ### Added
 
@@ -135,7 +147,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `ReCaptcha`: React component to render a Google reCAPTCHA v2 widget.
 
-[unreleased]: https://github.com/matei-radu/react-recaptcha-v2/compare/v1.0.9...HEAD
+[unreleased]: https://github.com/matei-radu/react-recaptcha-v2/compare/v2.0.0...HEAD
+[2.0.0]: https://github.com/matei-radu/react-recaptcha-v2/compare/v1.0.9...v2.0.0
 [1.0.9]: https://github.com/matei-radu/react-recaptcha-v2/compare/v1.0.8...v1.0.9
 [1.0.8]: https://github.com/matei-radu/react-recaptcha-v2/compare/v1.0.7...v1.0.8
 [1.0.7]: https://github.com/matei-radu/react-recaptcha-v2/compare/v1.0.6...v1.0.7

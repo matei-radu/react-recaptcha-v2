@@ -1,6 +1,6 @@
 {
   "name": "@matt-block/react-recaptcha-v2",
-  "version": "1.0.9",
+  "version": "2.0.0",
   "description": "Google reCAPTCHA v2 React component that does not pollute the DOM",
   "main": "lib/index.esm.js",
   "types": "types/index.d.ts",
@@ -25,8 +25,11 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "build": "rollup --config rollup.config.ts --configPlugin @rollup/plugin-typescript",
-    "postbuild": "tsc --emitDeclarationOnly",
+    "build": "run-s build:clean build:compile build:ts-decl",
+    "build:compile": "rollup --config rollup.config.ts --configPlugin @rollup/plugin-typescript",
+    "build:ts-decl": "tsc --emitDeclarationOnly",
+    "build:clean": "shx rm -rf lib types",
+    "typecheck": "tsc --noEmit",
     "prepare": "husky install"
   },
   "dependencies": {
@@ -38,14 +41,16 @@
     "@types/react": "^18.0.28",
     "husky": "^7.0.4",
     "lint-staged": "^12.5.0",
+    "npm-run-all": "^4.1.5",
     "prettier": "^2.8.4",
     "rollup": "^3.17.2",
     "rollup-plugin-copy": "^3.4.0",
+    "shx": "^0.3.4",
     "tslib": "^1.14.1",
     "typescript": "3.8.3"
   },
   "peerDependencies": {
-    "react": "^16.0.0 || ^17.0.0 || ^18.0.0"
+    "react": "^16.8.0 || ^17.0.0 || ^18.0.0"
   },
   "lint-staged": {
     "*.{js,flow,ts,tsx,json,css,md}": "prettier --write"
