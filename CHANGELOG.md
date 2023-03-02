@@ -14,8 +14,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - TypeScript declarations are now available under `lib` instead of `types`.
 - Bump `husky` to version `8.0.3`.
 - Bump `lint-staged` to version `13.1.2`.
-- Bump `tslib` to version `2.5.0`.
 - Bump `typescript` to version `4.9.5`.
+
+### Removed
+
+- `tslib` dev-dependency because it was unnecessary. The built code includes only one implementation of `__rest`
+  so there is no duplication that `tslib` was solving.
 
 ## [2.0.0] - 2022-03-01
 
