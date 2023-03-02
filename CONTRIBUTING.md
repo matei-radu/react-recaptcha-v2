@@ -28,10 +28,8 @@ $ npm run typecheck
 This script will build the application and emit the TypeScript declarations. If you inspect `package.json`, you will see
 the details of the process. In order:
 
-1. The output directories `/lib` and `/types` are cleared with `build:clear`, then
-2. The code is compiled with Rollup by running `build:rollup`. This will create and populate the `/lib` directory. Then
-3. `build:ts-decl` will trigger the TypeScript compiler to emit type declarations in `/types`. This is necessary because
-   Rollup cannot emit the declarations itself.
+1. The output directory `/lib` is cleared with `build:clear`, then
+2. The code is compiled with Rollup by running `build:rollup`. This will create and populate the `/lib` directory.
 
 ### `typecheck`
 
