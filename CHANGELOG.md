@@ -13,8 +13,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   `build:ts-decl` is removed.
 - TypeScript declarations are now available under `lib` instead of `types`.
 - Move lint-staged configuration to its own file `.lintstagedrc.json`.
+- Bump `@rollup/plugin-node-resolve` to version `15.0.2`.
+- Bump `@rollup/plugin-typescript` to version `11.1.0`.
+- Bump `@types/react` to version `18.2.1`.
 - Bump `husky` to version `8.0.3`.
-- Bump `lint-staged` to version `13.1.2`.
+- Bump `lint-staged` to version `13.2.2`.
+- Bump `prettier` to version `2.8.8`.
+- Bump `rollup` to version `3.21.4`.
 - Bump `typescript` to version `4.9.5`.
 
 ### Removed
