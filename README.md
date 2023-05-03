@@ -117,8 +117,8 @@ This source code is licensed under the MIT license found in the
 [prettier]: https://github.com/prettier/prettier
 [npm]: https://www.npmjs.com/package/@matt-block/react-recaptcha-v2
 [npm_shield]: https://img.shields.io/npm/v/@matt-block/react-recaptcha-v2/latest
-[npm_1]: https://www.npmjs.com/package/@matt-block/react-recaptcha-v2/v/1.0.9
-[npm_1_shield]: https://img.shields.io/badge/npm-v1.0.9-blue
+[npm_1]: https://www.npmjs.com/package/@matt-block/react-recaptcha-v2/v/1.0.10
+[npm_1_shield]: https://img.shields.io/badge/npm@legacy-v1.0.10-blue
 [recaptcha_admin]: https://www.google.com/recaptcha/admin
 [recaptcha_docs]: https://developers.google.com/recaptcha/docs/display
 [recaptcha_site]: https://developers.google.com/recaptcha/

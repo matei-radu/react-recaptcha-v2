@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.1] - 2022-05-03
+
 ### Changed
 
 - Updating TypeScript to v4.9 has fixed Rollup not being able to output type declarations, so the npm script
@@ -47,6 +49,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Bump `rollup` to version `3.17.2`.
 - Improve build process and commands with `npm-run-all` and `shx`. This also allows the project to be developed using
   any platform.
+
+## [1.0.10] - 2023-05-03
+
+### Changed
+
+- Bump `nanoid` to version `3.3.6`.
+- Bump `prettier` to version `2.8.8`.
+- Bump `typescript` to version `3.9.10`.
 
 ## [1.0.9] - 2023-02-23
 
@@ -167,8 +177,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `ReCaptcha`: React component to render a Google reCAPTCHA v2 widget.
 
-[unreleased]: https://github.com/matei-radu/react-recaptcha-v2/compare/v2.0.0...HEAD
-[2.0.0]: https://github.com/matei-radu/react-recaptcha-v2/compare/v1.0.9...v2.0.0
+[unreleased]: https://github.com/matei-radu/react-recaptcha-v2/compare/v2.0.1...HEAD
+[2.0.1]: https://github.com/matei-radu/react-recaptcha-v2/compare/v2.0.0...v2.0.1
+[2.0.0]: https://github.com/matei-radu/react-recaptcha-v2/compare/v1.0.10...v2.0.0
+[1.0.10]: https://github.com/matei-radu/react-recaptcha-v2/compare/v1.0.9...v1.0.10
 [1.0.9]: https://github.com/matei-radu/react-recaptcha-v2/compare/v1.0.8...v1.0.9
 [1.0.8]: https://github.com/matei-radu/react-recaptcha-v2/compare/v1.0.7...v1.0.8
 [1.0.7]: https://github.com/matei-radu/react-recaptcha-v2/compare/v1.0.6...v1.0.7
