@@ -6,6 +6,8 @@
 React wrapper component for Google's [reCAPTCHA v2][recaptcha_site] service,
 built with [TypeScript][typescript] and [Rollup][rollup].
 
+⚠️ **Support for version 1.x has ended on 2023-06-01**. Migrate to the latest major version.
+
 ### Features
 
 - [x] Does not pollute the DOM by cleaning up on unmount (see below)
@@ -32,9 +34,10 @@ This library will always target the most recent React package. If you are
 using an older release of React, use the correct version of this library
 from the compatibility table below (if available):
 
-|  React   | Library |
-| :------: | :-----: |
-| >=16.0.0 | latest  |
+|       React       |                  Library                  |   Status   | End-of-Life |
+| :---------------: | :---------------------------------------: | :--------: | :---------: |
+|    `>=16.8.0`     |    [![npm (scoped)][npm_shield]][npm]     | **Active** |      -      |
+| `16.0.0 - 16.7.x` | [![npm v1 (scoped)][npm_1_shield]][npm_1] |  **EOL**   | 2023-06-01  |
 
 ## Installation
 
@@ -105,6 +108,8 @@ This source code is licensed under the MIT license found in the
 [prettier]: https://github.com/prettier/prettier
 [npm]: https://www.npmjs.com/package/@matt-block/react-recaptcha-v2
 [npm_shield]: https://img.shields.io/npm/v/@matt-block/react-recaptcha-v2.svg
+[npm_1]: https://www.npmjs.com/package/@matt-block/react-recaptcha-v2/v/1.0.10
+[npm_1_shield]: https://img.shields.io/badge/npm@legacy-v1.0.10-blue
 [recaptcha_admin]: https://www.google.com/recaptcha/admin
 [recaptcha_docs]: https://developers.google.com/recaptcha/docs/display
 [recaptcha_site]: https://developers.google.com/recaptcha/
