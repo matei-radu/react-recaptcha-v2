@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Bump `nanoid` to version `3.3.6`.
+- Bump `prettier` to version `2.8.8`.
+- Bump `typescript` to version `3.9.10`.
+
 ## [1.0.9] - 2022-02-23
 
 ### Added
