@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Bump `@rollup/plugin-node-resolve` to version `15.2.3`.
+- Bump `@rollup/plugin-typescript` to version `11.1.6`.
+- Bump `@types/react` to version `18.3.3`.
+- Bump `husky` to version `9.0.11`.
+- Bump `lint-staged` to version `15.2.7`.
+- Bump `nanoid` to version `5.0.7`.
+- Bump `prettier` to version `3.3.2`.
+- Bump `rollup` to version `4.18.0`.
+- Bump `rollup-plugin-copy` to version `3.5.0`.
+
 ## [2.0.1] - 2022-05-03
 
 ### Changed

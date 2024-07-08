@@ -2,14 +2,14 @@
 
 ## Setting up a development environment
 
-The one hard requirement is to use at least Node.js `14.18.0`, which is the minimum supported version by the Rollup
+The one hard requirement is to use at least Node.js `18.12.0`, which is the minimum supported version by the Rollup
 bundler, though it is encouraged to use the most recent LTS version. If you're an [nvm](https://github.com/nvm-sh/nvm)
 user, there is an `.nvmrc` file in the project's root directory to easily set the correct version:
 
 ```shell
 $ nvm use
 Found '/path/to/project/react-recaptcha-v2/.nvmrc' with version <lts/hydrogen>
-Now using node v18.13.0 (npm v9.5.1)
+Now using node v18.20.3 (npm v9.8.1)
 ```
 
 The project also uses npm for package management. Avoid using Yarn or any other manager.
