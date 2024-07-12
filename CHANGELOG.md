@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.1.0] - 2024-07-12
+
 ### Added
 
 - `tabIndex` prop corresponding to the `data-tabindex` tag attribute.
@@ -23,7 +25,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Bump `rollup` to version `4.18.0`.
 - Bump `rollup-plugin-copy` to version `3.5.0`.
 
-## [2.0.1] - 2022-05-03
+## [2.0.1] - 2023-05-03
 
 ### Changed
 
@@ -45,7 +47,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `tslib` dev-dependency because it was unnecessary. The built code includes only one implementation of `__rest`
   so there is no duplication that `tslib` was solving.
 
-## [2.0.0] - 2022-03-01
+## [2.0.0] - 2023-03-01
 
 ### Added
 
@@ -193,7 +195,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `ReCaptcha`: React component to render a Google reCAPTCHA v2 widget.
 
-[unreleased]: https://github.com/matei-radu/react-recaptcha-v2/compare/v2.0.1...HEAD
+[unreleased]: https://github.com/matei-radu/react-recaptcha-v2/compare/v2.1.0...HEAD
+[2.0.1]: https://github.com/matei-radu/react-recaptcha-v2/compare/v2.0.1...v2.1.0
 [2.0.1]: https://github.com/matei-radu/react-recaptcha-v2/compare/v2.0.0...v2.0.1
 [2.0.0]: https://github.com/matei-radu/react-recaptcha-v2/compare/v1.0.10...v2.0.0
 [1.0.10]: https://github.com/matei-radu/react-recaptcha-v2/compare/v1.0.9...v1.0.10
