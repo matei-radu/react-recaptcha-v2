@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- `tabIndex` prop corresponding to the `data-tabindex` tag attribute.
+
 ### Changed
 
 - Bump `@rollup/plugin-node-resolve` to version `15.2.3`.

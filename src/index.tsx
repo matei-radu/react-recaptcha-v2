@@ -84,7 +84,7 @@ const removeChildElement = (element: HTMLElement): void => {
 const removeImplicitRecaptchaScripts = (): void => {
   const allScripts = Array.from(document.scripts);
   const additionalScripts = allScripts.filter((script) =>
-    IMPLICIT_SCRIPT_SRC_PATTERN.test(script.src)
+    IMPLICIT_SCRIPT_SRC_PATTERN.test(script.src),
   );
   additionalScripts.map(removeChildElement);
 };
@@ -114,7 +114,7 @@ const isNodeRecaptchaHiddenDiv = (node: Node): boolean => {
  * callback when a reCAPTCHA hidden div is found.
  */
 const mutationCallbackGenerator = (
-  onHiddenDivFound: (hiddenDiv: HTMLDivElement) => void
+  onHiddenDivFound: (hiddenDiv: HTMLDivElement) => void,
 ): MutationCallback => {
   return (mutations: MutationRecord[]) => {
     mutations.forEach((mutation) => {
@@ -138,6 +138,7 @@ interface ReCaptchaProps {
   siteKey: string;
   theme?: "light" | "dark";
   size?: "normal" | "compact";
+  tabIndex?: number;
   onSuccess?: (result: string) => any;
   onExpire?: () => any;
   onError?: () => any;
@@ -147,7 +148,7 @@ interface ReCaptchaProps {
  * React Hook for bind and unbinding reCAPTCHA callbacks to the `window`.
  */
 const useWindowCallbackBinder = (
-  callbacks: Pick<ReCaptchaProps, "onSuccess" | "onError" | "onExpire">
+  callbacks: Pick<ReCaptchaProps, "onSuccess" | "onError" | "onExpire">,
 ) => {
   const [onSuccessCallbackId] = useState(nanoid());
   const [onErrorCallbackId] = useState(nanoid());
@@ -208,7 +209,7 @@ const useRecaptchaHiddenDivManager = () => {
     const observer = new MutationObserver(
       mutationCallbackGenerator((div) => {
         hiddenDiv = div;
-      })
+      }),
     );
     observer.observe(document.body, { childList: true });
 
@@ -222,7 +223,7 @@ const useRecaptchaHiddenDivManager = () => {
 };
 
 const ReCaptcha: FC<ReCaptchaProps> = (props) => {
-  const { siteKey, theme, size, ...callbacks } = props;
+  const { siteKey, theme, size, tabIndex, ...callbacks } = props;
   const { onSuccessCallbackId, onErrorCallbackId, onExpireCallbackId } =
     useWindowCallbackBinder(callbacks);
 
@@ -237,6 +238,7 @@ const ReCaptcha: FC<ReCaptchaProps> = (props) => {
       data-sitekey={siteKey === "test" ? TEST_SITE_KEY : siteKey}
       data-theme={theme}
       data-size={size}
+      data-tabindex={tabIndex ?? 0}
       data-callback={onSuccessCallbackId}
       data-error-callback={onErrorCallbackId}
       data-expired-callback={onExpireCallbackId}

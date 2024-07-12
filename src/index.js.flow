@@ -13,6 +13,7 @@ declare interface ReCaptchaProps {
   siteKey: string;
   theme?: "light" | "dark";
   size?: "normal" | "compact";
+  tabIndex?: number;
   onSuccess?: (result: string) => any;
   onExpire?: () => any;
   onError?: () => any;
