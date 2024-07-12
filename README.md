@@ -28,14 +28,12 @@ will be removed, leaving a clean document:
 
 ## Compatibility
 
-This library will always target the most recent React package. If you are
-using an older release of React, use the correct version of this library
-from the compatibility table below (if available):
+⚠️**This library will stop being supported on December 31st 2024.**
 
-|       React       |                  Library                  |   Status   | End-of-Life |
-| :---------------: | :---------------------------------------: | :--------: | :---------: |
-|    `>=16.8.0`     |    [![npm (scoped)][npm_shield]][npm]     | **Active** |      -      |
-| `16.0.0 - 16.7.x` | [![npm v1 (scoped)][npm_1_shield]][npm_1] |  **EOL**   | 2023-06-01  |
+|       React       |                  Library                  |     Status      | End-of-Life |
+| :---------------: | :---------------------------------------: | :-------------: | :---------: |
+|   `16.8.0 - 18`   |    [![npm (scoped)][npm_shield]][npm]     | **Maintenance** | 2024-12-31  |
+| `16.0.0 - 16.7.x` | [![npm v1 (scoped)][npm_1_shield]][npm_1] |     **EOL**     | 2023-06-01  |
 
 ### Migrating from 1.x to 2.x
 
