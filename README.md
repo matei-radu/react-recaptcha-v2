@@ -28,11 +28,11 @@ will be removed, leaving a clean document:
 
 ## Compatibility
 
-⚠️**This library will stop being supported on December 31st 2024.**
+⚠️**This library will stop being supported on January 31st 2025.**
 
 |       React       |                  Library                  |     Status      | End-of-Life |
 | :---------------: | :---------------------------------------: | :-------------: | :---------: |
-|   `16.8.0 - 18`   |    [![npm (scoped)][npm_shield]][npm]     | **Maintenance** | 2024-12-31  |
+|   `16.8.0 - 19`   |    [![npm (scoped)][npm_shield]][npm]     | **Maintenance** | 2025-01-31  |
 | `16.0.0 - 16.7.x` | [![npm v1 (scoped)][npm_1_shield]][npm_1] |     **EOL**     | 2023-06-01  |
 
 ### Migrating from 1.x to 2.x
