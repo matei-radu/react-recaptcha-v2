@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.2.1] - 2025-12-01
+
+### Changed
+
+- Bump `@rollup/plugin-node-resolve` to version `15.2.4`.
+- Bump `@types/react` to version `18.3.27`.
+- Bump `lint-staged` to version `15.2.11`.
+- Bump `nanoid` to version `5.0.9`.
+- Bump `prettier` to version `3.3.3`.
+- Bump `rollup` to version `4.18.1`.
+
 ## [2.2.0] - 2025-01-03
 
 ### Added
@@ -201,7 +212,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `ReCaptcha`: React component to render a Google reCAPTCHA v2 widget.
 
-[unreleased]: https://github.com/matei-radu/react-recaptcha-v2/compare/v2.2.0...HEAD
+[unreleased]: https://github.com/matei-radu/react-recaptcha-v2/compare/v2.2.1...HEAD
+[2.2.1]: https://github.com/matei-radu/react-recaptcha-v2/compare/v2.2.0...v2.2.1
 [2.2.0]: https://github.com/matei-radu/react-recaptcha-v2/compare/v2.1.0...v2.2.0
 [2.1.0]: https://github.com/matei-radu/react-recaptcha-v2/compare/v2.0.1...v2.1.0
 [2.0.1]: https://github.com/matei-radu/react-recaptcha-v2/compare/v2.0.0...v2.0.1

@@ -28,12 +28,12 @@ will be removed, leaving a clean document:
 
 ## Compatibility
 
-⚠️**This library will stop being supported on January 31st 2025.**
+⚠️**This library is no longer supported since December 1st 2025.**
 
-|       React       |                  Library                  |     Status      | End-of-Life |
-| :---------------: | :---------------------------------------: | :-------------: | :---------: |
-|   `16.8.0 - 19`   |    [![npm (scoped)][npm_shield]][npm]     | **Maintenance** | 2025-01-31  |
-| `16.0.0 - 16.7.x` | [![npm v1 (scoped)][npm_1_shield]][npm_1] |     **EOL**     | 2023-06-01  |
+|       React       |                  Library                  | Status  | End-of-Life |
+| :---------------: | :---------------------------------------: | :-----: | :---------: |
+|   `16.8.0 - 19`   |    [![npm (scoped)][npm_shield]][npm]     | **EOL** | 2025-12-01  |
+| `16.0.0 - 16.7.x` | [![npm v1 (scoped)][npm_1_shield]][npm_1] | **EOL** | 2023-06-01  |
 
 ### Migrating from 1.x to 2.x
 
@@ -103,7 +103,7 @@ If you are looking to contribute to this project, check [CONTRIBUTING.md][contri
 
 ## License
 
-Copyright (c) 2018-present Matei Bogdan Radu.
+Copyright (c) 2018-2025 Matei Bogdan Radu.
 
 This source code is licensed under the MIT license found in the
 [LICENSE][license] file in the root directory of this source tree.

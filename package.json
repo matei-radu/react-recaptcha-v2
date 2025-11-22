@@ -1,6 +1,6 @@
 {
   "name": "@matt-block/react-recaptcha-v2",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "Google reCAPTCHA v2 React component that does not pollute the DOM",
   "main": "lib/index.esm.js",
   "types": "lib/index.d.ts",
@@ -16,7 +16,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/matei-radu/react-recaptcha-v2.git"
+    "url": "git+https://github.com/matei-radu/react-recaptcha-v2.git"
   },
   "bugs": "https://github.com/matei-radu/react-recaptcha-v2/issues",
   "homepage": "https://github.com/matei-radu/react-recaptcha-v2#readme",
@@ -31,20 +31,20 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "nanoid": "^5.0.7"
+    "nanoid": "5.0.9"
   },
   "devDependencies": {
-    "@rollup/plugin-node-resolve": "^15.2.3",
-    "@rollup/plugin-typescript": "^11.1.6",
-    "@types/react": "^18.3.3",
-    "husky": "^9.0.11",
-    "lint-staged": "^15.2.7",
-    "npm-run-all": "^4.1.5",
-    "prettier": "^3.3.2",
-    "rollup": "^4.18.0",
-    "rollup-plugin-copy": "^3.5.0",
-    "shx": "^0.3.4",
-    "typescript": "^4.9.5"
+    "@rollup/plugin-node-resolve": "15.2.4",
+    "@rollup/plugin-typescript": "11.1.6",
+    "@types/react": "18.3.27",
+    "husky": "9.0.11",
+    "lint-staged": "15.2.11",
+    "npm-run-all": "4.1.5",
+    "prettier": "3.3.3",
+    "rollup": "4.18.1",
+    "rollup-plugin-copy": "3.5.0",
+    "shx": "0.3.4",
+    "typescript": "4.9.5"
   },
   "peerDependencies": {
     "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"
